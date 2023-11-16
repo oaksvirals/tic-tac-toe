@@ -87,30 +87,10 @@ const game = (function() {
 
 const displayController = (function() {
     const playArea = document.querySelector('.game');
-    // const playButton = document.createElement('button');
 
     for (let i = 0; i < 9; i++) {
         const playButton = document.createElement('button');
         playArea.appendChild(playButton);
-        playButton.setAttribute('class', i)
-    }
-
-    // playArea.appendChild(playButton);
-    // playButton.setAttribute('class', '0-0');
-    // playArea.appendChild(playButton);
-    // playButton.setAttribute('class', '0-1');
-    // playArea.appendChild(playButton);
-    // playButton.setAttribute('class', '0-2');
-    // playArea.appendChild(playButton);
-    // playButton.setAttribute('class', '1-0');
-    // playArea.appendChild(playButton);
-    // playButton.setAttribute('class', '1-1');
-    // playArea.appendChild(playButton);
-    // playButton.setAttribute('class', '1-2');
-    // playArea.appendChild(playButton);
-    // playButton.setAttribute('class', '2-0');
-    // playArea.appendChild(playButton);
-    // playButton.setAttribute('class', '2-1');
-    // playArea.appendChild(playButton);
-    // playButton.setAttribute('class', '2-2');
+        playButton.setAttribute('class', 'btn' + i)
+    };
 })();

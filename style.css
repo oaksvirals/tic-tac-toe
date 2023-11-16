@@ -1,5 +1,70 @@
+:root {
+    --borderColor: black;
+    --border: 2px solid var(--borderColor);
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+.game {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+button {
+    padding: 50px;
+    border: 0px;
+    background-color: white;
+}
+
+.btn0 {
+    border-right: var(--border);
+    border-bottom: var(--border);
+}
+
+.btn1 {
+    border-right: var(--border);
+    border-left: var(--border);
+    border-bottom: var(--border);
+}
+
+.btn2 {
+    border-left: var(--border);
+    border-bottom: var(--border);
+}
+
+.btn3 {
+    border-top: var(--border);
+    border-right: var(--border);
+    border-bottom: var(--border);
+}
+
+.btn4 {
+    border: var(--border);
+}
+
+.btn5 {
+    border-left: var(--border);
+    border-top: var(--border);
+    border-bottom: var(--border);
+}
+
+.btn6 {
+    border-top: var(--border);
+    border-right: var(--border);
+}
+
+.btn7 {
+    border-top: var(--border);
+    border-left: var(--border);
+    border-right: var(--border);
+}
+
+.btn8 {
+    border-top: var(--border);
+    border-left: var(--border);
 }
