@@ -12,14 +12,22 @@ const game = (function() {
     const getActivePlayer = () => activePlayer.name;
 
     // init board
-    for (let i = 0; i < rows; i++) {
-        board[i] = [];
-        for (let j = 0; j < columns; j++) {
-            board[i].push(0);
-        }
+    const initBoard = () => {
+        for (let i = 0; i < rows; i++) {
+            board[i] = [];
+            for (let j = 0; j < columns; j++) {
+                board[i].push(0);
+            }
+        };
+
+        movesLeft = 9;
+        winner = '';
     };
 
+    initBoard();
+
     function playRound(row, col) {
+            movesLeft--;
             board[row][col] = activePlayer.token;
             changePlayer();
             checkWinner();
@@ -31,29 +39,34 @@ const game = (function() {
     };
 
     function checkWinner(token) {
-        // check horizontal wins
-        if (board[0][0] === token && board[0][1] === token && board[0][2] === token) {
-            winner = 'Player ' + token + ' wins!'
-        } else if (board[1][0] === token && board[1][1] === token && board[1][2] === token) {
-            winner = 'Player ' + token + ' wins!'
-        } else if (board[2][0] === token && board[2][1] === token && board[2][2] === token) {
-            winner = 'Player ' + token + ' wins!'
-        };
-
-        // check vertical wins
-        if (board[0][0] === token && board[1][0] === token && board[2][0] === token) {
-            winner = 'Player ' + token + ' wins!'
-        } else if (board[0][1] === token && board[1][1] === token && board[2][1] === token) {
-            winner = 'Player ' + token + ' wins!'
-        } else if (board[0][2] === token && board[1][2] === token && board[2][2] === token) {
-            winner = 'Player ' + token + ' wins!'
-        };
-
-        // check diagnal wins
-        if (board[0][0] === token && board[1][1] === token && board[2][2] === token) {
-            winner = 'Player ' + token + ' wins!'
-        } else if (board[0][2] === token && board[1][1] === token && board[2][0] === token) {
-            winner = 'Player ' + token + ' wins!'
+        if (movesLeft > 0) {
+            if (board[0][0] === token && board[0][1] === token && board[0][2] === token) { // horizontal wins
+                winner = 'Player ' + token + ' wins!'
+                console.log(winner)
+            } else if (board[1][0] === token && board[1][1] === token && board[1][2] === token) {
+                winner = 'Player ' + token + ' wins!'
+                console.log(winner)
+            } else if (board[2][0] === token && board[2][1] === token && board[2][2] === token) {
+                winner = 'Player ' + token + ' wins!'
+                console.log(winner)
+            } else if (board[0][0] === token && board[1][0] === token && board[2][0] === token) { //vertical wins
+                winner = 'Player ' + token + ' wins!'
+                console.log(winner)
+            } else if (board[0][1] === token && board[1][1] === token && board[2][1] === token) {
+                winner = 'Player ' + token + ' wins!'
+                console.log(winner)
+            } else if (board[0][2] === token && board[1][2] === token && board[2][2] === token) {
+                winner = 'Player ' + token + ' wins!'
+                console.log(winner)
+            } else if (board[0][0] === token && board[1][1] === token && board[2][2] === token) { //diagnal wins
+                winner = 'Player ' + token + ' wins!'
+                console.log(winner)
+            } else if (board[0][2] === token && board[1][1] === token && board[2][0] === token) {
+                winner = 'Player ' + token + ' wins!'
+                console.log(winner)
+            };
+        } else {
+            console.log('Tie!');
         };
     };
 
@@ -70,4 +83,34 @@ const game = (function() {
         printBoard,
     };
 
+})();
+
+const displayController = (function() {
+    const playArea = document.querySelector('.game');
+    // const playButton = document.createElement('button');
+
+    for (let i = 0; i < 9; i++) {
+        const playButton = document.createElement('button');
+        playArea.appendChild(playButton);
+        playButton.setAttribute('class', i)
+    }
+
+    // playArea.appendChild(playButton);
+    // playButton.setAttribute('class', '0-0');
+    // playArea.appendChild(playButton);
+    // playButton.setAttribute('class', '0-1');
+    // playArea.appendChild(playButton);
+    // playButton.setAttribute('class', '0-2');
+    // playArea.appendChild(playButton);
+    // playButton.setAttribute('class', '1-0');
+    // playArea.appendChild(playButton);
+    // playButton.setAttribute('class', '1-1');
+    // playArea.appendChild(playButton);
+    // playButton.setAttribute('class', '1-2');
+    // playArea.appendChild(playButton);
+    // playButton.setAttribute('class', '2-0');
+    // playArea.appendChild(playButton);
+    // playButton.setAttribute('class', '2-1');
+    // playArea.appendChild(playButton);
+    // playButton.setAttribute('class', '2-2');
 })();
