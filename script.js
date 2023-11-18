@@ -57,6 +57,7 @@ function game() {
 
         const board = gameboard.getBoard();
         const symbol = currentPlayer;
+        let winner = null;
 
         function playRound(row, col) {
 
@@ -72,10 +73,13 @@ function game() {
         function checkWin() {
 
             // check mark, find winner name, announce winner
-            let winner = null;
             function announceWinner() {
                 if (winner !== null) {
-                    
+                    if (winner === 'X') {
+                        console.log('Player One Wins');
+                    } else if (winner === 'O') {
+                        console.log('Player Two Wins');
+                    };
                 }
             }
 
@@ -141,6 +145,20 @@ function game() {
                 announceWinner();
         };
 
+        };
+
+        function restartGame() {
+            board[0][0] = 0;
+            board[0][1] = 0;
+            board[0][2] = 0;
+            board[1][0] = 0;
+            board[1][1] = 0;
+            board[1][2] = 0;
+            board[2][0] = 0;
+            board[2][1] = 0;
+            board[2][2] = 0;
+
+            winner = null;
         };
 
         return { playRound }
