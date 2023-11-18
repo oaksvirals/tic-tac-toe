@@ -1,3 +1,7 @@
+// ---- DOM Controller ----
+// 1) Build play area with buttons
+const gameArea = document.querySelector('.game');
+
 // ---- Gameboard Setup ----
 // 1) Initialize newBoard at start.
 const gameboard = (function() {
@@ -79,6 +83,8 @@ function game() {
                         console.log('Player One Wins');
                     } else if (winner === 'O') {
                         console.log('Player Two Wins');
+                    } else if (winner === 'none') {
+                        console.log('Tie!');
                     };
                 }
             }
@@ -161,6 +167,6 @@ function game() {
             winner = null;
         };
 
-        return { playRound }
+        return { playRound, restartGame }
 
 };
