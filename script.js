@@ -56,17 +56,91 @@ function switchPlayer() {
 function game() {
 
         const board = gameboard.getBoard();
+        const symbol = currentPlayer;
 
         function playRound(row, col) {
 
-            const symbol = currentPlayer;
-
             if (board[row][col] === 0) {
                 board[row][col] = symbol;
+                checkWin();
                 switchPlayer();
             } else {
                 return;
             }
+        };
+
+        function checkWin() {
+
+            // check mark, find winner name, announce winner
+            let winner = null;
+            function announceWinner() {
+                if (winner !== null) {
+                    
+                }
+            }
+
+            // draw
+            if (board[0][0] !== 0 &&
+                board[0][1] !== 0 &&
+                board[0][2] !== 0 &&
+                board[1][0] !== 0 &&
+                board[1][1] !== 0 &&
+                board[1][2] !== 0 &&
+                board[2][0] !== 0 &&
+                board[2][1] !== 0 &&
+                board[2][2] !== 0) {
+                winner = 'none';
+                announceWinner();
+                };
+
+            // horizontal wins
+            if (board[0][0] === symbol &&
+                board[0][1] === symbol &&
+                board[0][2] === symbol) {
+                winner = symbol;
+                announceWinner();
+     } else if (board[1][0] === symbol &&
+                board[1][1] === symbol &&
+                board[1][2] === symbol) {
+                winner = symbol;
+                announceWinner();
+     } else if (board[2][0] === symbol &&
+                board[2][1] === symbol &&
+                board[2][2] === symbol) {
+                winner = symbol;
+                announceWinner();
+     };
+            // vertical wins
+            if (board[0][0] === symbol &&
+                board[1][0] === symbol &&
+                board[2][0] === symbol) {
+                winner = symbol;
+                announceWinner();
+     } else if (board[0][1] === symbol &&
+                board[1][1] === symbol &&
+                board[2][1] === symbol) {
+                winner = symbol;
+                announceWinner();
+     } else if (board[0][2] === symbol &&
+                board[1][2] === symbol &&
+                board[2][2] === symbol) {
+                winner = symbol;
+                announceWinner();
+        };
+
+            // diagnal wins
+            if (board[0][0] === symbol &&
+                board[1][1] === symbol &&
+                board[2][2] === symbol) {
+                winner = symbol;
+                announceWinner();
+     } else if (board[0][2] === symbol &&
+                board[1][1] === symbol &&
+                board[2][0] === symbol) {
+                winner = symbol;
+                announceWinner();
+        };
+
         };
 
         return { playRound }
