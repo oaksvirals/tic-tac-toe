@@ -49,6 +49,126 @@ function switchPlayer() {
     return currentPlayer = currentPlayer === players().getPlayerOne().mark ? players().getPlayerTwo().mark : players().getPlayerOne().mark;
 };
 
+// ---- DOM Controller ----
+const gameArea = document.querySelector('.game');
+const btn0 = document.createElement('button');
+const btn1 = document.createElement('button');
+const btn2 = document.createElement('button');
+const btn3 = document.createElement('button');
+const btn4 = document.createElement('button');
+const btn5 = document.createElement('button');
+const btn6 = document.createElement('button');
+const btn7 = document.createElement('button');
+const btn8 = document.createElement('button');
+
+gameArea.appendChild(btn0);
+gameArea.appendChild(btn1);
+gameArea.appendChild(btn2);
+gameArea.appendChild(btn3);
+gameArea.appendChild(btn4);
+gameArea.appendChild(btn5);
+gameArea.appendChild(btn6);
+gameArea.appendChild(btn7);
+gameArea.appendChild(btn8);
+
+btn0.setAttribute('class', 'btn0');
+btn1.setAttribute('class', 'btn1');
+btn2.setAttribute('class', 'btn2');
+btn3.setAttribute('class', 'btn3');
+btn4.setAttribute('class', 'btn4');
+btn5.setAttribute('class', 'btn5');
+btn6.setAttribute('class', 'btn6');
+btn7.setAttribute('class', 'btn7');
+btn8.setAttribute('class', 'btn8');
+
+btn0.addEventListener('click', selectSquare);
+btn1.addEventListener('click', selectSquare);
+btn2.addEventListener('click', selectSquare);
+btn3.addEventListener('click', selectSquare);
+btn4.addEventListener('click', selectSquare);
+btn5.addEventListener('click', selectSquare);
+btn6.addEventListener('click', selectSquare);
+btn7.addEventListener('click', selectSquare);
+btn8.addEventListener('click', selectSquare);
+
+function selectSquare() {
+
+    switch (this) {
+        case btn0:
+            if (this.textContent !== '') {
+                return;
+            } else {
+                this.textContent = currentPlayer;
+            };
+            game().playRound(0, 0);
+        break;
+        case btn1:
+            if (this.textContent !== '') {
+                return;
+            } else {
+                this.textContent = currentPlayer;
+            };
+            game().playRound(0, 1);
+        break;
+        case btn2:
+            if (this.textContent !== '') {
+                return;
+            } else {
+                this.textContent = currentPlayer;
+            };
+            game().playRound(0, 2);
+        break;
+        case btn3:
+            if (this.textContent !== '') {
+                return;
+            } else {
+                this.textContent = currentPlayer;
+            };
+            game().playRound(1, 0);
+        break;
+        case btn4:
+            if (this.textContent !== '') {
+                return;
+            } else {
+                this.textContent = currentPlayer;
+            };
+            game().playRound(1, 1);
+        break;
+        case btn5:
+            if (this.textContent !== '') {
+                return;
+            } else {
+                this.textContent = currentPlayer;
+            };
+            game().playRound(1, 2);
+        break;
+        case btn6:
+            if (this.textContent !== '') {
+                return;
+            } else {
+                this.textContent = currentPlayer;
+            };
+            game().playRound(2, 0);
+        break;
+        case btn7:
+            if (this.textContent !== '') {
+                return;
+            } else {
+                this.textContent = currentPlayer;
+            };
+            game().playRound(2, 1);
+        break;
+        case btn8:
+            if (this.textContent !== '') {
+                return;
+            } else {
+                this.textContent = currentPlayer;
+            };
+            game().playRound(2, 2);
+        break;
+    }
+};
+
 // ---- Game Mechanics ----
 // 1) playRound - update board with mark, check it's not used already.
 // 2) checkWin - check for win conditions or draw and announce it
@@ -81,7 +201,17 @@ function game() {
                     } else if (winner === 'none') {
                         console.log('Tie!');
                     };
-                }
+                };
+
+                btn0.disabled = true;
+                btn1.disabled = true;
+                btn2.disabled = true;
+                btn3.disabled = true;
+                btn4.disabled = true;
+                btn5.disabled = true;
+                btn6.disabled = true;
+                btn7.disabled = true;
+                btn8.disabled = true;
             }
 
             // draw
@@ -173,137 +303,18 @@ function game() {
             btn6.textContent = '';
             btn7.textContent = '';
             btn8.textContent = '';
+
+            btn0.disabled = false;
+            btn1.disabled = false;
+            btn2.disabled = false;
+            btn3.disabled = false;
+            btn4.disabled = false;
+            btn5.disabled = false;
+            btn6.disabled = false;
+            btn7.disabled = false;
+            btn8.disabled = false;
         };
 
         return { playRound }
 
-};
-
-// ---- DOM Controller ----
-const gameArea = document.querySelector('.game');
-const btn0 = document.createElement('button');
-const btn1 = document.createElement('button');
-const btn2 = document.createElement('button');
-const btn3 = document.createElement('button');
-const btn4 = document.createElement('button');
-const btn5 = document.createElement('button');
-const btn6 = document.createElement('button');
-const btn7 = document.createElement('button');
-const btn8 = document.createElement('button');
-
-gameArea.appendChild(btn0);
-gameArea.appendChild(btn1);
-gameArea.appendChild(btn2);
-gameArea.appendChild(btn3);
-gameArea.appendChild(btn4);
-gameArea.appendChild(btn5);
-gameArea.appendChild(btn6);
-gameArea.appendChild(btn7);
-gameArea.appendChild(btn8);
-
-btn0.setAttribute('class', 'btn0');
-btn1.setAttribute('class', 'btn1');
-btn2.setAttribute('class', 'btn2');
-btn3.setAttribute('class', 'btn3');
-btn4.setAttribute('class', 'btn4');
-btn5.setAttribute('class', 'btn5');
-btn6.setAttribute('class', 'btn6');
-btn7.setAttribute('class', 'btn7');
-btn8.setAttribute('class', 'btn8');
-
-btn0.addEventListener('click', selectSquare);
-btn1.addEventListener('click', selectSquare);
-btn2.addEventListener('click', selectSquare);
-btn3.addEventListener('click', selectSquare);
-btn4.addEventListener('click', selectSquare);
-btn5.addEventListener('click', selectSquare);
-btn6.addEventListener('click', selectSquare);
-btn7.addEventListener('click', selectSquare);
-btn8.addEventListener('click', selectSquare);
-
-function selectSquare() {
-
-    function btnText() {
-        if (this.textContent !== '') {
-            return;
-        } else {
-            this.textContent = currentPlayer;
-        };
-        console.log('button one')
-    }
-
-    switch (this) {
-        case btn0:
-            if (this.textContent !== '') {
-                return;
-            } else {
-                this.textContent = currentPlayer;
-            };
-            game().playRound(0, 0);
-        break;
-        case btn1:
-            if (this.textContent !== '') {
-                return;
-            } else {
-                this.textContent = currentPlayer;
-            };
-            game().playRound(0, 1);
-        break;
-        case btn2:
-            if (this.textContent !== '') {
-                return;
-            } else {
-                this.textContent = currentPlayer;
-            };
-            game().playRound(0, 2);
-        break;
-        case btn3:
-            if (this.textContent !== '') {
-                return;
-            } else {
-                this.textContent = currentPlayer;
-            };
-            game().playRound(1, 0);
-        break;
-        case btn4:
-            if (this.textContent !== '') {
-                return;
-            } else {
-                this.textContent = currentPlayer;
-            };
-            game().playRound(1, 1);
-        break;
-        case btn5:
-            if (this.textContent !== '') {
-                return;
-            } else {
-                this.textContent = currentPlayer;
-            };
-            game().playRound(1, 2);
-        break;
-        case btn6:
-            if (this.textContent !== '') {
-                return;
-            } else {
-                this.textContent = currentPlayer;
-            };
-            game().playRound(2, 0);
-        break;
-        case btn7:
-            if (this.textContent !== '') {
-                return;
-            } else {
-                this.textContent = currentPlayer;
-            };
-            game().playRound(2, 1);
-        break;
-        case btn8:
-            if (this.textContent !== '') {
-                return;
-            } else {
-                this.textContent = currentPlayer;
-            };
-            game().playRound(2, 2);
-        break;
-    }
 };
