@@ -65,13 +65,12 @@ function game() {
                 board[row][col] = symbol;
                 checkWin();
                 switchPlayer();
-            } else {
+            } else if(board[row][col] !== 0) {
                 return;
             }
         };
 
         function checkWin() {
-
             // check mark, find winner name, announce winner
             function announceWinner() {
                 if (winner !== null) {
@@ -153,7 +152,6 @@ function game() {
         restartButton.addEventListener('click', restartGame);
 
         function restartGame() {
-
             winner = null;
 
             board[0][0] = 0;
@@ -224,41 +222,87 @@ btn7.addEventListener('click', selectSquare);
 btn8.addEventListener('click', selectSquare);
 
 function selectSquare() {
+
+    function btnText() {
+        if (this.textContent !== '') {
+            return;
+        } else {
+            this.textContent = currentPlayer;
+        };
+        console.log('button one')
+    }
+
     switch (this) {
         case btn0:
-            this.textContent = currentPlayer;
+            if (this.textContent !== '') {
+                return;
+            } else {
+                this.textContent = currentPlayer;
+            };
             game().playRound(0, 0);
         break;
         case btn1:
-            this.textContent = currentPlayer;
+            if (this.textContent !== '') {
+                return;
+            } else {
+                this.textContent = currentPlayer;
+            };
             game().playRound(0, 1);
         break;
         case btn2:
-            this.textContent = currentPlayer;
+            if (this.textContent !== '') {
+                return;
+            } else {
+                this.textContent = currentPlayer;
+            };
             game().playRound(0, 2);
         break;
         case btn3:
-            this.textContent = currentPlayer;
+            if (this.textContent !== '') {
+                return;
+            } else {
+                this.textContent = currentPlayer;
+            };
             game().playRound(1, 0);
         break;
         case btn4:
-            this.textContent = currentPlayer;
+            if (this.textContent !== '') {
+                return;
+            } else {
+                this.textContent = currentPlayer;
+            };
             game().playRound(1, 1);
         break;
         case btn5:
-            this.textContent = currentPlayer;
+            if (this.textContent !== '') {
+                return;
+            } else {
+                this.textContent = currentPlayer;
+            };
             game().playRound(1, 2);
         break;
         case btn6:
-            this.textContent = currentPlayer;
+            if (this.textContent !== '') {
+                return;
+            } else {
+                this.textContent = currentPlayer;
+            };
             game().playRound(2, 0);
         break;
         case btn7:
-            this.textContent = currentPlayer;
+            if (this.textContent !== '') {
+                return;
+            } else {
+                this.textContent = currentPlayer;
+            };
             game().playRound(2, 1);
         break;
         case btn8:
-            this.textContent = currentPlayer;
+            if (this.textContent !== '') {
+                return;
+            } else {
+                this.textContent = currentPlayer;
+            };
             game().playRound(2, 2);
         break;
     }
