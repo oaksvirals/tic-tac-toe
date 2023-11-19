@@ -197,12 +197,18 @@ function game() {
 
                 if (winner !== null) {
                     if (winner === 'X') {
+                        playerTwoWinner.remove();
+                        tie.remove();
                         announcement.appendChild(playerOneWinner);
                         playerOneWinner.textContent = 'Player One Wins!';
                     } else if (winner === 'O') {
+                        playerOneWinner.remove();
+                        tie.remove();
                         announcement.appendChild(playerTwoWinner);
                         playerTwoWinner.textContent = 'Player Two Wins!';
                     } else if (winner === 'none') {
+                        playerTwoWinner.remove();
+                        playerOneWinner.remove();
                         announcement.appendChild(tie);
                         tie.textContent = 'It\'s a tie!';
                     };
@@ -322,6 +328,8 @@ function game() {
             playerOneWinner.remove();
             playerTwoWinner.remove();
             tie.remove();
+
+            currentPlayer = players().getPlayerOne().mark;
         };
 
         return { playRound }
