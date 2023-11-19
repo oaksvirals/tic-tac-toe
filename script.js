@@ -1,26 +1,22 @@
 // ---- Gameboard Setup ----
-// 1) Initialize newBoard at start.
 const gameboard = (function() {
     let board = [];
 
-    const newBoard = () => {
-        board = [];
-
+    const newBoard = (function() {
         for (let i = 0; i < 3; i++) {
             board[i] = [];
             for (let j = 0; j < 3; j++) {
                 board[i].push(0);
             }
         };
-    };
-    newBoard();
+    })();
 
     const getBoard = () => board;
 
     const printBoard = () => console.log(board);
-    printBoard();
+    // printBoard();
 
-    return { getBoard, newBoard, printBoard }
+    return { getBoard, printBoard }
 
 })();
 
@@ -175,6 +171,11 @@ function selectSquare() {
 // 3) restartGame - clear board and variables and start fresh
 function game() {
 
+        const announcement = document.querySelector('.announcement');
+        const playerOneWinner = document.createElement('h2');
+        const playerTwoWinner = document.createElement('h2');
+        const tie = document.createElement('h2');
+
         const board = gameboard.getBoard();
         const symbol = currentPlayer;
         let winner = null;
@@ -193,13 +194,17 @@ function game() {
         function checkWin() {
             // check mark, find winner name, announce winner
             function announceWinner() {
+
                 if (winner !== null) {
                     if (winner === 'X') {
-                        console.log('Player One Wins');
+                        announcement.appendChild(playerOneWinner);
+                        playerOneWinner.textContent = 'Player One Wins!';
                     } else if (winner === 'O') {
-                        console.log('Player Two Wins');
+                        announcement.appendChild(playerTwoWinner);
+                        playerTwoWinner.textContent = 'Player Two Wins!';
                     } else if (winner === 'none') {
-                        console.log('Tie!');
+                        announcement.appendChild(tie);
+                        tie.textContent = 'It\'s a tie!';
                     };
                 };
 
@@ -313,6 +318,10 @@ function game() {
             btn6.disabled = false;
             btn7.disabled = false;
             btn8.disabled = false;
+
+            playerOneWinner.remove();
+            playerTwoWinner.remove();
+            tie.remove();
         };
 
         return { playRound }

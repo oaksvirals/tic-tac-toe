@@ -87,6 +87,19 @@ body {
     transform: scale(0.95);
 }
 
+.announcement {
+    grid-column: 2 / 6;
+    grid-row: 8 / 9;
+
+    border: 1px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 28px;
+    font-weight: bold;
+}
+
 .btn0,
 .btn1,
 .btn2,
